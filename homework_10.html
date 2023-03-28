@@ -1,0 +1,53 @@
+<!-- 讓使用者輸入生日計算幾歲了 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生日計算機</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: gray;
+      }
+      #submit {
+        width: 500px;
+        height: 200px;
+        margin: 0 auto;
+        border: 2px solid black;
+        border-radius: 5px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="submit">
+      <input type="date" id="birth" value="2000-01-01" />
+      <input type="submit" value="計算年齡" />
+      <div class="result">您今年:&nbsp;&nbsp;&nbsp;&nbsp;歲</div>
+    </form>
+    <script>
+      const submit = document.querySelector("#submit");
+      submit.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const birthInput = document.querySelector("#birth");
+        const result = document.querySelector(".result");
+        result.innerHTML = "您今年:&nbsp;&nbsp;&nbsp;&nbsp;歲";
+        result.innerHTML = `您今年:${Math.floor(
+          (new Date().getTime() - new Date(birthInput.value).getTime()) /
+            1000 /
+            60 /
+            60 /
+            24 /
+            365
+        )}歲`;
+      });
+    </script>
+  </body>
+</html>

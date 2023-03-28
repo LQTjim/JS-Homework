@@ -1,0 +1,69 @@
+<!-- 用^畫出下列圖型 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>畫聖誕樹</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-size: 2rem;
+      }
+
+      .green {
+        color: green;
+        line-height: 2rem;
+        /* white-space: pre; */
+      }
+    </style>
+  </head>
+  <body>
+    <label
+      >選擇聖誕樹的層數<input
+        type="number"
+        value="3"
+        min="3"
+        max="20"
+        class="input-layer"
+    /></label>
+    <input type="button" value="按我繪製聖誕樹" class="submit-btn" />
+    <div class="result"></div>
+    <script>
+      function drawTree() {
+        const layer = document.querySelector(".input-layer");
+        const submitBtn = document.querySelector(".submit-btn");
+        const result = document.querySelector(".result");
+        submitBtn.addEventListener("click", () => {
+          const layerValue = +layer.value;
+          //reset tree
+          result.innerHTML = "";
+          const blank = "&nbsp;";
+          const tree = "^";
+          // if layer less than 3, function not excute
+          if (layerValue < 3) {
+            return;
+          }
+          for (let i = 1; i <= layerValue; i++) {
+            result.innerHTML += `<pre class="green" >${blank.repeat(
+              layerValue - i
+            )}${tree.repeat(2 * i - 1)}</pre>`;
+            console.log(layerValue, i);
+          }
+
+          result.innerHTML += `<pre class="green" >${blank.repeat(
+            layerValue - 1
+          )}${tree}</pre><pre class="green" >${blank.repeat(
+            layerValue - 1
+          )}${tree}</pre>`;
+        });
+      }
+      drawTree();
+    </script>
+  </body>
+</html>

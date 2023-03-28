@@ -1,0 +1,52 @@
+<!-- 請設計一個 function，傳入攝氏溫度可以轉成華氏溫度，傳入華氏溫度可以轉成攝氏溫度 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>溫度計</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: gray;
+      }
+      .container {
+        width: 500px;
+        height: 200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <label>請輸入攝氏 <input type="number" id="celsius" /></label>
+      <div class="result">換算結果:</div>
+    </div>
+    <script>
+      function temperatureCalculator() {
+        const celsiusInput = document.querySelector("#celsius");
+        const result = document.querySelector(".result");
+        celsiusInput.addEventListener("input", () => {
+          result.innerHTML = "換算結果:";
+          if (celsiusInput.value === "") {
+            return;
+          }
+          result.innerHTML += `華氏:${toF(+celsiusInput.value)}°F`;
+        });
+        function toF(C) {
+          return C * (9 / 5) + 32;
+        }
+      }
+      temperatureCalculator();
+    </script>
+  </body>
+</html>

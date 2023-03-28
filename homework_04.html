@@ -1,0 +1,46 @@
+<!-- 輸入西元年，判斷是否是閏年
+西元除以400可整除，為閏年。==> year%400===0 閏年
+西元除以4可整除但除以100不可整除，為閏年。==> year%4===0 true && year%100!==0 閏年
+西元除以4不可整除，為平年。 ==> year%4!==0 平年 
+西元除以100可整除但除以400不可整除，為平年  ==> year%100===0 && year%400!==0  平年-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>輸入西元年，判斷是否是閏年</title>
+  </head>
+  <body>
+    <label
+      >輸入西元年，判斷是否是閏年(0-9999)
+      <input type="number" min="0" max="9999" step="1" class="year"
+    /></label>
+    <input type="button" value="按我確認" class="input-btn" />
+    <div class="result"></div>
+    <script>
+      function fc() {
+        const yearInput = document.querySelector(".year");
+        const inputBtn = document.querySelector(".input-btn");
+        const result = document.querySelector(".result");
+
+        inputBtn.addEventListener("click", () => {
+          let yearValue = +yearInput.value;
+          result.innerHTML = "";
+          if (yearValue % 400 === 0) {
+            result.innerHTML = `${yearValue}是閏年`;
+          } else if (yearValue % 4 === 0 && yearValue % 100 !== 0) {
+            result.innerHTML = `${yearValue}是閏年`;
+          } else if (yearValue % 4 !== 0) {
+            result.innerHTML = `${yearValue}是平年`;
+          } else if (yearValue % 100 === 0 && yearValue % 400 !== 0) {
+            result.innerHTML = `${yearValue}是平年`;
+          } else {
+            result.innerHTML = "請重新輸入";
+          }
+        });
+      }
+      fc();
+    </script>
+  </body>
+</html>
