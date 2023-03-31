@@ -8,19 +8,22 @@
     <title>密碼檢查</title>
   </head>
   <body>
-    <input type="password" id="pwdCheck" oninput="checkPwd()" />
+    <input type="password" id="pwdCheck" />
     <div class="warning"></div>
     <script>
+      //取得idPwd元素
+      const idPwd = document.querySelector("#pwdCheck");
+      idPwd.addEventListener("input", checkPwd);
       function checkPwd() {
-        //取得idPwd元素
-        const idPwd = document.querySelector("#pwdCheck");
         //取得idPwd元素值
         const password = idPwd.value;
         const warning = document.querySelector(".warning");
         warning.innerHTML = "";
+        regExp = /asd/;
         //判斷元素值是否為空白，密碼長度是否大於6
         if (password === "" && password.length <= 6) {
           warning.innerHTML = "密碼不得為空,密碼需大於6個字";
+          return;
         }
 
         //如果長度是否大於6，判斷是否包含字母、數字、特殊符號

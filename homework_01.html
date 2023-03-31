@@ -19,8 +19,10 @@ BMI≧35：重度肥胖 -->
         box-sizing: border-box;
       }
       body {
-        background: rgb(190, 183, 183);
+        background: black;
         padding-top: 50px;
+        font-weight: bold;
+        color: whitesmoke;
       }
       .form {
         width: 50%;
@@ -32,6 +34,9 @@ BMI≧35：重度肥胖 -->
         gap: 10px;
         border-radius: 10px;
         background: whitesmoke;
+        box-shadow: 2px 2px 5px white;
+        margin-bottom: 10px;
+        color: black;
       }
 
       .form-input-kg,
@@ -51,6 +56,11 @@ BMI≧35：重度肥胖 -->
         width: 100px;
         align-self: center;
         cursor: pointer;
+        font-weight: bold;
+        border: none;
+        background: lightgreen;
+        border-radius: 5px;
+        padding: 2px;
       }
       .BMI-result,
       .warning {
@@ -83,38 +93,8 @@ BMI≧35：重度肥胖 -->
       /></label>
       <input type="submit" value="送出" />
     </form>
-    <div class="BMI-result">您的BMI為:</div>
+    <div class="BMI-result">請輸入您的BMI</div>
     <div class="warning"></div>
-    <script>
-      function BMI() {
-        const form = document.querySelector(".form");
-        const div = document.querySelector(".warning");
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const formInputKg = +document.querySelector(".form-input-kg").value;
-          const formInputM = +document.querySelector(".form-input-m").value;
-          const BMIResult = document.querySelector(".BMI-result");
-          const BMI = parseFloat(formInputKg / formInputM ** 2).toFixed(2);
-          BMIResult.innerHTML = `您的BMI為:${BMI}`;
-          div.innerHTML = "";
-          if (BMI < 18.5) {
-            div.innerHTML += "過輕";
-          } else if (BMI < 24) {
-            div.innerHTML += "正常";
-          } else if (BMI < 27) {
-            div.innerHTML += "過重";
-          } else if (BMI < 30) {
-            div.innerHTML += "輕度肥胖";
-          } else if (BMI < 35) {
-            div.innerHTML += "中度肥胖";
-          } else if (BMI >= 35) {
-            div.innerHTML += "重度肥胖";
-          } else {
-            div.innerHTML += "????";
-          }
-        });
-      }
-      BMI();
-    </script>
+    <script src="build/homework_01.js"></script>
   </body>
 </html>

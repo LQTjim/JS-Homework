@@ -20,6 +20,8 @@
      2.同時要確定lastIndexOf()返回不能為-1(這個條件和indexOf("@") === -1重複 故刪除)
      */
       emailCheck.addEventListener("input", () => {
+        console.log(emailCheck.value.lastIndexOf("@"));
+        console.log(emailCheck.value.indexOf("@"));
         console.log(
           emailCheck.value.lastIndexOf("@") === emailCheck.value.indexOf("@")
         );
