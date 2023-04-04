@@ -6,34 +6,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>電子郵件檢查器</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: linear-gradient(
+          to right,
+          rgb(173, 83, 137),
+          rgb(60, 16, 83)
+        );
+        padding: 100px 20px;
+      }
+      input {
+        border: none;
+      }
+      input:focus {
+        outline: none;
+      }
+      .container {
+        width: 400px;
+        padding: 20px 0;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        border-radius: 5px;
+        background: radial-gradient(
+          592px at 48.2% 50%,
+          rgba(255, 255, 249, 0.6) 0%,
+          rgb(160, 199, 254) 74.6%
+        );
+      }
+      #emailCheck {
+        width: 200px;
+        border-radius: 5px;
+        padding: 5px 10px;
+      }
+      .validation {
+        max-width: 80%;
+        padding: 5px 15px 10px;
+        border-radius: 5px;
+        font-weight: 500;
+        letter-spacing: 3px;
+      }
+      .correct {
+        background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+        color: antiquewhite;
+      }
+      .in-correct {
+        background: radial-gradient(
+          circle at 10% 20%,
+          rgb(221, 49, 49) 0%,
+          rgb(119, 0, 0) 90%
+        );
+        color: white;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
-    <input type="email" name="" id="emailCheck" />
-    <div class="validation"></div>
-    <script>
-      const emailCheck = document.querySelector("#emailCheck");
-      const validation = document.querySelector(".validation");
-      /*  
-     解題思路
-     str.indexOf() 測試字串是否包含"@"或"."
-     1.用str.lastIndexOf()檢查最後一個是否和第一個重複 
-     2.同時要確定lastIndexOf()返回不能為-1(這個條件和indexOf("@") === -1重複 故刪除)
-     */
-      emailCheck.addEventListener("input", () => {
-        console.log(emailCheck.value.lastIndexOf("@"));
-        console.log(emailCheck.value.indexOf("@"));
-        console.log(
-          emailCheck.value.lastIndexOf("@") === emailCheck.value.indexOf("@")
-        );
-        validation.innerHTML = "";
-        if (
-          emailCheck.value.indexOf("@") === -1 ||
-          emailCheck.value.indexOf(".") === -1 ||
-          emailCheck.value.lastIndexOf("@") !== emailCheck.value.indexOf("@")
-        ) {
-          validation.innerHTML = "電子郵件中要有 @ . 以及 @ 不能重複";
-        }
-      });
-    </script>
+    <div class="container">
+      <input type="email" name="" id="emailCheck" />
+      <div class="validation"></div>
+    </div>
+    <script src="build/homework_09.js"></script>
   </body>
 </html>

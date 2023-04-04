@@ -13,6 +13,11 @@
       }
       body {
         padding-top: 50px;
+        background: linear-gradient(
+          112.1deg,
+          rgb(32, 38, 57) 11.4%,
+          rgb(63, 76, 119) 70.2%
+        );
       }
       table {
         width: 90%;
@@ -29,6 +34,30 @@
         line-height: 50px;
         border-right: 2px solid black;
         text-align: center;
+      }
+      .color1 {
+        color: orange;
+      }
+      .color2 {
+        color: yellow;
+      }
+      .color3 {
+        color: green;
+      }
+      .color4 {
+        color: blue;
+      }
+      .color6 {
+        color: Indigo;
+      }
+      .color7 {
+        color: purple;
+      }
+      .color8 {
+        color: black;
+      }
+      .color9 {
+        color: brown;
       }
     </style>
   </head>
@@ -52,42 +81,6 @@
       </tr>
       ...
     </table> -->
-    <script>
-      /*  document
-        .querySelector("body")
-        .appendChild(document.createElement("table"));
-      let text = "";
-      for (let i = 1; i < 10; i++) {
-        text += "<tr>";
-        for (let j = 1; j < 10; j++) {
-          if (i === j) {
-            text += `<td style="background:red;">${j}*${i}=${j * i}</td>`;
-          } else {
-            text += `<td>${j}*${i}=${j * i}</td>`;
-          }
-        }
-        text += "</tr>";
-      }
-      document.querySelector("table").innerHTML = text; */
-      function drawTimesTable() {
-        const body = document.querySelector("body");
-        const table = document.createElement("table");
-        body.appendChild(table);
-        let text = "";
-        for (let i = 1; i < 10; i++) {
-          text += "<tr>";
-          for (let j = 1; j < 10; j++) {
-            if (i === j) {
-              text += `<td style="background:red;">${j}*${i}=${j * i}</td>`;
-            } else {
-              text += `<td>${j}*${i}=${j * i}</td>`;
-            }
-          }
-          text += "</tr>";
-        }
-        table.innerHTML = text;
-      }
-      drawTimesTable();
-    </script>
+    <script src="build/homework_05.js"></script>
   </body>
 </html>

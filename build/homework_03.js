@@ -1,33 +1,37 @@
 "use strict";
-let num = Math.random();
-let guessNum = Math.floor(num * 100);
-console.log(guessNum);
-let userNum = prompt(`請輸入猜測的數字(1~100)，輸入0離開遊戲`);
-while (guessNum !== userNum) {
-    if (+userNum === 0) {
-        break;
+let guessNum = Math.floor(Math.random() * 100);
+console.log("作弊用:", guessNum);
+const userNum = document.querySelector("[data-user-input]");
+const restartBtn = document.querySelector("[data-restart]");
+const result = document.querySelector(".result");
+userNum.addEventListener("keydown", (e) => {
+    const userNumValue = userNum.value;
+    if (e.key === "Enter") {
+        console.log(userNumValue);
+        if (+userNumValue === 0) {
+            result.innerText = "遊戲結束";
+            userNum.disabled = true;
+        }
+        else if (+userNumValue > guessNum) {
+            result.innerText = `請輸入猜測的數字(1~100)，輸入0離開遊戲,${userNumValue}太大!`;
+        }
+        else if (+userNumValue < guessNum) {
+            result.innerText = `請輸入猜測的數字(1~100)，輸入0離開遊戲,${userNumValue}太小!`;
+        }
+        else if (+userNumValue === guessNum) {
+            result.innerText = `猜對了! 遊戲結束`;
+            userNum.disabled = true;
+        }
+        else {
+            result.innerText = `請輸入猜測的數字(1~100)，輸入0離開遊戲`;
+        }
     }
-    else if (userNum === "") {
-        userNum = prompt(`請輸入猜測的數字(1~100)，輸入0離開遊戲 >=${userNum}`);
-        continue;
-    }
-    else if (guessNum < +userNum) {
-        alert("數字太大!");
-        userNum = prompt(`請輸入猜測的數字(1~100)，輸入0離開遊戲 >=${userNum}`);
-        continue;
-    }
-    else if (guessNum > +userNum) {
-        alert("數字太小!");
-        userNum = prompt(`請輸入猜測的數字(1~100)，輸入0離開遊戲 <=${userNum}`);
-        continue;
-    }
-    else {
-        userNum = prompt(`請輸入猜測的數字(1~100)，輸入0離開遊戲`);
-        continue;
-    }
-}
-if (userNum === guessNum) {
-    alert("猜對了!");
-}
-alert("遊戲結束");
-document.write("遊戲結束了!");
+    else
+        return;
+});
+restartBtn.addEventListener("click", () => {
+    userNum.disabled = false;
+    guessNum = Math.floor(Math.random() * 100);
+    console.log("作弊用:", guessNum);
+    result.innerText = "";
+});

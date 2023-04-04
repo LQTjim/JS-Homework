@@ -10,37 +10,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>輸入西元年，判斷是否是閏年</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        color: antiquewhite;
+        background: black;
+        padding: 50px;
+        font-family: "Noto Sans SC", sans-serif;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 500px;
+        background: linear-gradient(
+          112.1deg,
+          rgb(32, 38, 57) 11.4%,
+          rgb(63, 76, 119) 70.2%
+        );
+        margin: 50px auto 0 auto;
+        padding: 50px;
+        text-align: center;
+        border-radius: 10px;
+      }
+      .container > h3 {
+        color: blanchedalmond;
+        letter-spacing: 5px;
+      }
+      .container > label > input {
+        width: 80px;
+        border-radius: 5px;
+        padding: 5px 0 5px 10px;
+      }
+
+      .container > label > input:focus {
+        outline: none;
+      }
+      .input-btn {
+        display: block;
+        margin: auto;
+        width: 100px;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        background: green;
+        font-weight: bold;
+        color: blue;
+      }
+      .result {
+        line-height: 1.1;
+        height: 16px;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
-    <label
-      >輸入西元年，判斷是否是閏年(0-9999)
-      <input type="number" min="0" max="9999" step="1" class="year"
-    /></label>
-    <input type="button" value="按我確認" class="input-btn" />
-    <div class="result"></div>
-    <script>
-      function fc() {
-        const yearInput = document.querySelector(".year");
-        const inputBtn = document.querySelector(".input-btn");
-        const result = document.querySelector(".result");
-
-        inputBtn.addEventListener("click", () => {
-          let yearValue = +yearInput.value;
-          result.innerHTML = "";
-          if (yearValue % 400 === 0) {
-            result.innerHTML = `${yearValue}是閏年`;
-          } else if (yearValue % 4 === 0 && yearValue % 100 !== 0) {
-            result.innerHTML = `${yearValue}是閏年`;
-          } else if (yearValue % 4 !== 0) {
-            result.innerHTML = `${yearValue}是平年`;
-          } else if (yearValue % 100 === 0 && yearValue % 400 !== 0) {
-            result.innerHTML = `${yearValue}是平年`;
-          } else {
-            result.innerHTML = "請重新輸入";
-          }
-        });
-      }
-      fc();
-    </script>
+    <div class="container">
+      <h3>閏年判斷器</h3>
+      <label
+        >請輸入西元年(0-9999) :
+        <input type="number" min="0" max="9999" step="1" class="year" required
+      /></label>
+      <input type="button" value="按我確認" class="input-btn" />
+      <div class="result"></div>
+    </div>
+    <script src="build/homework_04.js"></script>
   </body>
 </html>
