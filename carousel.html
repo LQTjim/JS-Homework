@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>輪播牆</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: radial-gradient(
+          circle at 10% 20%,
+          rgb(254, 255, 165) 0%,
+          rgb(255, 232, 182) 90%
+        );
+        background-attachment: fixed;
+      }
+
+      .container {
+        border: 1px solid red;
+        width: 500px;
+        height: 340px;
+
+        margin: auto;
+        display: flex;
+        position: relative;
+      }
+      .img-wrapper {
+        width: 100%;
+        height: 340px;
+
+        position: relative;
+      }
+      img {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        visibility: hidden;
+      }
+      img.active {
+        visibility: visible;
+      }
+
+      .btn-container {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+      }
+      .btn-container > span {
+        display: inline-block;
+        padding: 5px;
+        margin-left: 10px;
+        width: 50px;
+        height: 5px;
+        background: white;
+        border: 1px solid rgb(67, 64, 64);
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn-container > span.active {
+        background: red;
+      }
+      .btn-left,
+      .btn-right {
+        cursor: pointer;
+        position: absolute;
+        bottom: 50%;
+        width: 50px;
+        height: 30px;
+      }
+      .btn-left {
+      }
+      .btn-right {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="img-wrapper">
+        <img
+          class="active"
+          src="https://images.pexels.com/photos/14905759/pexels-photo-14905759.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
+        <img
+          src="https://images.pexels.com/photos/14343389/pexels-photo-14343389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
+        <img
+          src="https://images.pexels.com/photos/15636474/pexels-photo-15636474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
+        <img
+          src="https://images.pexels.com/photos/14460412/pexels-photo-14460412.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
+        <img
+          src="https://images.pexels.com/photos/8105076/pexels-photo-8105076.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
+        <img
+          src="https://images.pexels.com/photos/15032293/pexels-photo-15032293.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
+      </div>
+      <div class="btn-container">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <button class="btn-left"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="btn-right">
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <script src="build/carousel.js"></script>
+  </body>
+</html>
