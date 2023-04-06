@@ -1,11 +1,33 @@
+const container: HTMLElement = document.querySelector(".container")!;
 const btnLeft: HTMLButtonElement = document.querySelector(".btn-left")!;
 const btnRight: HTMLButtonElement = document.querySelector(".btn-right")!;
 const imgs: NodeList = document.querySelectorAll("img");
 const spans: NodeList = document.querySelectorAll(".btn-container>span");
-
+let flag = false;
 let currentImgIndex: number = 0;
+
+container.addEventListener("mouseenter", () => {
+  flag = true;
+});
+container.addEventListener("mouseleave", () => {
+  flag = false;
+});
 btnLeft.addEventListener("click", prevImg);
 btnRight.addEventListener("click", nextImg);
+spans.forEach((el) => {
+  const span = el as HTMLElement;
+  span.addEventListener("click", () => {
+    let { currentImg, currentSpan } = removeClass();
+    currentImgIndex = +span.getAttribute("data-index")!;
+    currentImg = imgs[currentImgIndex] as HTMLElement;
+    currentImg.classList.add("active");
+    currentSpan = spans[currentImgIndex] as HTMLElement;
+    currentSpan.classList.add("active");
+  });
+});
+setInterval(() => {
+  if (!flag) nextImg();
+}, 1500);
 
 function removeClass() {
   let currentImg = imgs[currentImgIndex] as HTMLElement;
